@@ -34,6 +34,55 @@ header .navbar ul li {
   height: 100vh; 
 }
 
-.events-container {
+table {
   margin-top: 5em;
+}
+
+thead, tbody {
+  margin-right: 2.5em;
+}
+
+.add-event {
+  margin-top: 10em;
+}
+
+.add-event-button {
+  margin-top: 10em;
+}
+
+.edit-event {
+  margin-top: 10em;
+}
+
+.add-member {
+  margin-top: 20em;
+}
+
+.edit-member {
+  margin-top: 10em;
+}
+
+.password-verification {
+  margin-top: 10em;
+}
+
+.add-date {
+  margin-top: 10em;
+}
+
+.password-container {
+  margin-top: 10em;
+}
+
+.merged-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.displaying-availability-from-member-page {
+  /* margin-top: 10em; */
+}
+
+.editNewAvailability {
+  margin-top: 10em;
 }
