@@ -59,8 +59,7 @@ function EventPageDetails() {
     return new Date(dateString).toLocaleDateString("en-US", options);
   };
 
-  console.log(eventDetails)
-
+  
   if (!eventDetails) {
     return (
       <div className="password-container">
@@ -77,6 +76,9 @@ function EventPageDetails() {
       </div>
     );
   }
+  
+  // console.log(eventDetails.members.map((elementOfEachMember) => elementOfEachMember.availabilities ))
+  // console.log(eventDetails.dates.map((elementOfEachDate) => elementOfEachDate.availabilities ))
 
   console.log(eventDetails)
 
@@ -89,22 +91,21 @@ function EventPageDetails() {
           </tr>
           <tr key={eventDetails._id}>
             <th>Name</th>
-            <th>{formatDate(eventDetails.date)}</th>
             {eventDetails.dates.map(elementDate =>        
-              <th>{formatDate(elementDate.date)}</th>
+              <th>
+                <Link to={`/dates/${elementDate._id}`}>{formatDate(elementDate.date)}</Link>
+              </th>
             )}
           </tr>
         </thead>
         <tbody>
-        {eventDetails.members.map((displayMember, index) => 
+        {eventDetails.members.map((displayMember) => 
           <tr key={displayMember._id}>
             <th>
-              <Link to={`/members/${displayMember._id}`}>
-                {displayMember.member.name}
-              </Link>
+              <Link to={`/members/${displayMember._id}`}>{displayMember.member.name}</Link>
             </th>
             {displayMember.availabilities.map(element => <th><Link to={`/availabilities/${element._id}`}>{element.availability}</Link></th>  )}
-          </tr>
+          </tr> 
         )}
         </tbody>
       </table>

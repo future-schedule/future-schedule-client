@@ -12,6 +12,7 @@ import AddDate from './components/AddDate';
 import AddAvailability from './components/AddAvailability';
 import EditAvailability from './components/EditAvailability';
 import DeleteMember from './components/DeleteMember';
+import EditDate from './components/EditDate';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path='/events/:eventId/addMember' element={<AddMember />} />
         <Route path='/members/:memberId' element={<DeleteMember />} />
         <Route path='/events/:eventId/addDate' element={<AddDate />} />
+        <Route path='/dates/:dateId' element={<EditDate />} />
         <Route path='/members/:memberId/availability' element={<AddAvailability />} />
         <Route path='/availabilities/:availabilityId' element={<EditAvailability />} />
       </Routes>

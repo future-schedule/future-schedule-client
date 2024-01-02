@@ -9,13 +9,13 @@ function AddAvailability() {
   const navigate = useNavigate();
 
   const [availability, setAvailability] = useState([]);
-
+  const [dateId, setDateId] = useState("");
  
     const addNewAvailability = (e) => {
       e.preventDefault();
 
       const newAvailability = {
-        availability
+        availability, dateId
       }
 
       axios.post(`${API_URL}/api/members/${memberId}/availabilities`, newAvailability, {headers: {Authorization: `Bearer ${storedToken}`}})
@@ -43,6 +43,14 @@ function AddAvailability() {
         <option value="✗">✗</option>
         <option value="Could be">Could be</option>
       </select>
+
+      <label>Date Id</label>
+      <input 
+        type="text"
+        name="dateId"
+        value={dateId}
+        onChange={e => setDateId(e.target.value)}
+      />
       <button type="submit">Submit</button>
     </form>
   );

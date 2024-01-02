@@ -10,7 +10,6 @@ function EditEvent() {
 
   const [title, setTitle] = useState("");
   const [hour, setHour] = useState("");
-  const [date, setDate] = useState("");
 
   useEffect (() => {
     const fetchEventHandle = () => {
@@ -18,11 +17,9 @@ function EditEvent() {
         .then(response => {
           const title = response.data.title;
           const hour = response.data.hour;
-          const date = response.data.date;
           
           setTitle(title);
           setHour(hour);
-          setDate(date);
         })
         .catch(e => console.log("failed to fetch the event", e))
     };
@@ -32,10 +29,7 @@ function EditEvent() {
 
   const editEventHandle = (e) => {
     e.preventDefault();
-
-    const editEventBody = {
-      title, hour, date
-    };
+    const editEventBody = {title, hour};
 
     axios.put(`${API_URL}/api/events/${eventId}`, editEventBody, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then(() => {navigate(-1)})
@@ -61,13 +55,6 @@ function EditEvent() {
             onChange={e => setHour(e.target.value)}
           />
 
-        <label>Date</label>
-          <input 
-            type="Date"
-            name="date"
-            value={date}
-            onChange={e => setDate(e.target.value)}
-          />
         <button type="submit">Edit</button>  
       </form>
     </div>

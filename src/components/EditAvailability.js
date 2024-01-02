@@ -28,13 +28,13 @@ function EditAvailability() {
     };
 
     axios.put(`${API_URL}/api/availabilities/${availabilityId}`, updateNewAvailabilityBody, {headers: {Authorization: `Bearer ${storedToken}`}})
-      .then(() => {navigate(-1); alert("success to edit!")})
+      .then(() => { setAvailability(""); navigate(-1); })
       .catch(e => console.log("failed to edit"));
   };
 
   const deleteNewAvailabilityHandle = () => {
     axios.delete(`${API_URL}/api/availabilities/${availabilityId}`, {headers: {Authorization: `Bearer ${storedToken}`}})
-      .then(() => {alert("success to remove the new availability"); navigate(-1)})
+      .then(() => {navigate(-1)})
       .catch(e => console.log("failed to remove the new availability"))
   };
 

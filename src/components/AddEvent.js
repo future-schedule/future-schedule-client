@@ -8,7 +8,6 @@ function AddEvent() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
   const [hour, setHour] = useState("");
   const [password, setPassword] = useState(""); // New state for the password
 
@@ -17,13 +16,12 @@ function AddEvent() {
     e.preventDefault();
 
     const requestEventBody = {
-      title, date, hour, password
+      title, hour, password
     }
 
     axios.post(`${API_URL}/api/events`, requestEventBody, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then( response => {
         setTitle("");
-        setDate("");
         setHour("");
         setPassword("");
         navigate("/events")
@@ -47,15 +45,7 @@ function AddEvent() {
             name="hour"
             value={hour}
             onChange={e => setHour(e.target.value)}
-          />
-        <label>Date</label>
-          <input 
-            type="date"
-            name="date"
-            value={date}
-            onChange={e => setDate(e.target.value)}
-          />
-        
+          />        
         <label>Password</label>
           <input 
             type="password"
