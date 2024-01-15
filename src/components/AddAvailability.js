@@ -27,9 +27,6 @@ function AddAvailability() {
         .catch(e => console.log("failed to fetch the specific member"))
     };
 
-
-  console.log(availability)
-
   return(
     <form onSubmit={addNewAvailability}>
       <label>Adding New Availability</label>
